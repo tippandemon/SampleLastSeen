@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+        <link rel="stylesheet" href="client/CSS/style.css">
+    </head>
+    <body>
+
+            <!-- FB Sharing-->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=112795319354171";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+        <!-- Page Container -->
+        <div data-ng-app="lastSeenApp">
+
+            <!-- Main Container -->
+            <div class="container" data-ng-controller = "mainController">
+                
+                <!-- Header section -->
+                <div class="header">
+
+                    <div class="row">
+                        <!-- Image Section -->
+                        <div class="col-sm-2">
+                            <img src="client/CSS/Image/logo.jpg" class="logo"/>
+                        </div>
+
+                        <!-- Search Box Section -->
+                       
+                        <div class="col-sm-8 search-box-container">
+                            <input class="search-box" type="text" data-ng-model="searchMenuItem" placeholder="Search Menu Items..."/>
+                        </div>
+
+                        <!-- Link Section-->
+                        <div class="col-sm-2 links-container">
+                            
+                            <div class="page-sharing-links"> 
+                                <div  style="display:inline-block" data-href="https://www.facebook.com/Lastseenrestaurant/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FLastseenrestaurant%2F&amp;src=sdkpreparse"><i class="fa fa-facebook-square" style="color:#f5861f" aria-hidden="true"></i></a></div>
+                                
+                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                
+                            </div>
+                            <div class="login-link-section">
+                                <span class="popup-link" data-ng-click="openSignUpModal()"> Sign Up </span> | <span class="popup-link" data-ng-click="openLoginModal()"> Login </span>
+                            </div>
+                            <div class="user-section">
+                            <span class="glyphicon glyphicon-user user-symbol"></span><span class="popup-link" data-ng-click="logout()"> Sign Out </span> 
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+
+                </div>
+
+                
+
+                <!-- Content Section -->
+                <div class="row">
+                    <!-- Left Section-->
+                    
+                    
+                    <!-- Item Section -->
+                    <div class="col-sm-8 less-padding">
+                        <div class="cart-container row no-margin">
+                            <div class="col-sm-3">
+                                <ul>
+                                    <li data-ng-repeat = "meals in mealType" data-ng-click="showSelectedMeal(meals.Name)">{{ meals.Name }}</li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                            <div class="col-sm-9" style="border-left: 1px solid #d0cec6">
+                                <div class="content-header">
+                                    <span class="menu">Menu</span><span class="price">Price</span>
+                                </div>
+                                <div data-ng-repeat = "item in itemsList | orderBy: 'Meal' | filter: searchMenuItem">
+                                    <span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true" data-ng-click="addItem(item)"></span>
+                                    <span>{{ item.ItemName}}</span>
+                                    <span class="item-price">{{ item.Price}}</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    <!-- Sub Total Section-->
+                    <div class="col-sm-4 less-padding">
+                        
+                        <div class="cart-container your-cart-section">
+                            <div class="content-header">
+                                <span class="menu">Your Cart</span>
+                            </div>
+                            <div class="cart-sub-header">
+                                <span>Items</span><span class="qty">Qty</span><span class="price">Price</span>
+                            </div>
+                            <div class="billed-items">
+                                <div data-ng-repeat="item in  cartItems" class="no-margin">
+                                    <span>{{ item.itemName}}</span>
+                                    <span class="cart-qty">{{ item.Quantity}}</span>
+                                    <span class="cart-price">{{ item.price}}</span>
+                                </div>
+                            </div>
+                        
+                        
+
+                            <div>
+                                <span>Total : </span><span class="cart-price">{{ cartTotal }}</span>
+                            </div>
+
+                            <div>
+                                <span>Discount : </span><span class="cart-price">{{ discount }}</span>
+                            </div>
+
+                            <div class="total-amount">
+                                <span>Total Amount : </span><span class="cart-price">{{ cartTotal - discount }}</span>
+                            </div>
+
+                            <div>
+                                <button data-ng-click="proceedToPay()" class="proceed-to-pay-button">Proceed To Pay</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                
+                
+                
+            
+
+                <!-- SignUp Modal Popup -->
+                <div id="signUpModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                
+                                <div>
+                                    <header class="login-modal-header">Sign Up with us.</header>
+                                    <div>
+                                        <form id="signUpSection">
+                                            <input type="text" data-ng-model="Name" placeholder="Full Name"/>
+                                            <input type="number" data-ng-model="PhoneNumber" placeholder="Phone Number"/>
+                                            <input type="email" data-ng-model="EmailId" placeholder="Email Id"/>
+                                            <input type="password" data-ng-model="Password" placeholder="Password"/>
+                                            <input type="submit" data-ng-click="generateOTP()" value="Sign Up"/>
+                                            
+                                            <div class="login-page-links-container">
+                                                <span class="signup-link">Do you have an existing account?</span>
+                                            </div>
+                                        </form>
+                                        <form id="otpSection">
+                                            <input type="text" data-ng-model="otp" placeholder="Enter OTP"/>
+                                            <input type="submit" data-dismiss="modal" data-ng-click="signUp()" value="Sign Up"/>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Login Modal Popup -->
+                <div id="loginModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                
+                                <div>
+                                    <header class="login-modal-header">Login to your account</header>
+                                    <div>
+                                        <form style="overflow: auto">
+                                            <input type="number" data-ng-model="loginId" placeholder="Phone Number"/>
+                                            <input type="password" data-ng-model="loginPassword" placeholder="Password"/>
+                                            <input type="submit" data-dismiss="modal" data-ng-click="login()" value="Login"/>
+                                            <div class="login-page-links-container">
+                                                <span class="forgot-password-link">I have forgot my password</span>
+                                            
+                                                <span class="signup-link">Not a Registered User</span>
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+         <!--Loading the script file -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="client/JS/app.js"></script>
+        <script src="client/JS/servicefactory.js"></script>
+    </body>
+</html>

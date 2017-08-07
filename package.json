@@ -1,0 +1,21 @@
+{
+  "name": "lastseen",
+  "version": "1.0.0",
+  "description": "Sample node project",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "multer": "^1.3.0",
+    "otplib": "^4.0.6",
+    "twilio": "^3.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "rahul verma",
+  "license": "ISC"
+}
