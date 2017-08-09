@@ -107,29 +107,29 @@
                             <div class="content-header">
                                 <span class="menu">Your Cart</span>
                             </div>
-                            <div class="cart-sub-header">
-                                <span>Items</span><span class="qty">Qty</span><span class="price">Price</span>
+                            <div class="cart-sub-header row">
+                                <span class="col-sm-8">Items</span><span class="col-sm-2">Qty</span><span class="col-sm-2">Price</span>
                             </div>
                             <div class="billed-items">
-                                <div data-ng-repeat="item in  cartItems" class="no-margin">
-                                    <span>{{ item.itemName}}</span>
-                                    <span class="cart-qty">{{ item.Quantity}}</span>
-                                    <span class="cart-price">{{ item.price}}</span>
+                                <div data-ng-repeat="item in  cartItems" class="no-margin row">
+                                    <span class="col-sm-8">{{ item.itemName}}</span>
+                                    <span class="col-sm-2">{{ item.Quantity}}</span>
+                                    <span class="col-sm-2">{{ item.price}}</span>
                                 </div>
                             </div>
                         
                         
 
-                            <div>
-                                <span>Total : </span><span class="cart-price">{{ cartTotal }}</span>
+                            <div class="row">
+                                <span class="col-sm-10">Total : </span><span class="col-sm-2">{{ cartTotal }}</span>
                             </div>
 
-                            <div>
-                                <span>Discount : </span><span class="cart-price">{{ discount }}</span>
+                            <div class="row">
+                                <span class="col-sm-10">Discount : </span><span class="col-sm-2">{{ discount }}</span>
                             </div>
 
-                            <div class="total-amount">
-                                <span>Total Amount : </span><span class="cart-price">{{ cartTotal - discount }}</span>
+                            <div class="total-amount row">
+                                <span class="col-sm-10">Total Amount : </span><span class="col-sm-2">{{ cartTotal - discount }}</span>
                             </div>
 
                             <div>

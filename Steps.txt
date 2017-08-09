@@ -1,0 +1,14 @@
+Step 1 : - Create table structure for DB.
+Step 2 : - Create table DB.
+Step 3 : - Insert 5 items.
+Step 4 : - create api to fetch the list on Load.
+Step 5 : - Display the data on page.
+Step 6 : - Create the layout of page.
+Step 7 : - Use angular repeat to create item section.
+Step 8 : - Create static page.
+Step 9 : - Create user table structure for DB.
+Step 10 : - Add login/Signup feature.
+Step 11 : - Verification of user.
+Step 12 : - Add fb/google signup.
+Step 13 : - create admin page.
+Step 14 : - Add Chat option.
